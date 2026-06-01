@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --cream: #F5F0E8;
+  --black: #080808;
+  --gray: #7A7A7A;
+  --font-display: var(--font-bebas);
+  --font-body: var(--font-grotesk);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--cream);
+  color: var(--black);
+  font-family: var(--font-body), 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* grain overlay on entire page */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  mix-blend-mode: multiply;
+}
+
+.font-display { font-family: var(--font-display), 'Impact', sans-serif; }
+.font-body { font-family: var(--font-body), 'Arial', sans-serif; }
+
+/* marquee */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 18s linear infinite; white-space: nowrap; display: flex; }
+.marquee-track:hover { animation-play-state: paused; }
+
+/* fade animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-up         { animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) forwards; }
+.fade-up-delay   { animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.15s forwards; opacity: 0; }
+.fade-up-delay-2 { animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.3s forwards; opacity: 0; }
+.fade-up-delay-3 { animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.45s forwards; opacity: 0; }
+
+/* product card hover */
+.product-card .card-overlay {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.product-card:hover .card-overlay { opacity: 1; }
+.product-card img, .product-card video {
+  transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.product-card:hover img,
+.product-card:hover video { transform: scale(1.06); }
+
+/* clipping / diagonal divider */
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+.clip-diagonal-inv {
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+}

@@ -1,14 +1,28 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useCart } from "@/context/CartContext"
 import { useLang } from "@/context/LanguageContext"
-import { useT } from "@/lib/translations"
+import { useT, Lang } from "@/lib/translations"
+
+const LANGUAGES: { code: Lang; label: string }[] = [
+  { code: "en", label: "English" },
+  { code: "vi", label: "Tiếng Việt" },
+  { code: "es", label: "Español" },
+  { code: "pt", label: "Português" },
+  { code: "fr", label: "Français" },
+  { code: "ar", label: "العربية" },
+  { code: "ko", label: "한국어" },
+  { code: "ja", label: "日本語" },
+]
 
 export default function Nav({ light }: { light?: boolean }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [langOpen, setLangOpen] = useState(false)
+  const langDesktopRef = useRef<HTMLDivElement>(null)
+  const langMobileRef = useRef<HTMLDivElement>(null)
   const { lang, setLang } = useLang()
   const tr = useT(lang)
 
@@ -16,6 +30,17 @@ export default function Nav({ light }: { light?: boolean }) {
     const onScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener("scroll", onScroll)
     return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as Node
+      const outsideDesktop = !langDesktopRef.current?.contains(target)
+      const outsideMobile = !langMobileRef.current?.contains(target)
+      if (outsideDesktop && outsideMobile) setLangOpen(false)
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [])
 
   const links: [string, string][] = [
@@ -63,23 +88,52 @@ export default function Nav({ light }: { light?: boolean }) {
             </Link>
           ))}
 
-          {/* language toggle */}
-          <div className="flex items-center gap-1" style={{ borderLeft: `1px solid ${light && !scrolled && !menuOpen ? "rgba(8,8,8,0.15)" : "rgba(245,240,232,0.15)"}`, paddingLeft: "16px" }}>
+          {/* language dropdown */}
+          <div ref={langDesktopRef} style={{ position: "relative", borderLeft: `1px solid ${light && !scrolled && !menuOpen ? "rgba(8,8,8,0.15)" : "rgba(245,240,232,0.15)"}`, paddingLeft: "16px" }}>
             <button
-              onClick={() => setLang("en")}
-              className="font-body text-xs tracking-[0.15em] uppercase transition-all"
-              style={{ color: lang === "en" ? "var(--gold)" : textColor, opacity: lang === "en" ? 1 : 0.4, padding: "2px 0", background: "none", border: "none", cursor: "pointer" }}
+              onClick={() => setLangOpen(!langOpen)}
+              className="font-body text-xs tracking-[0.15em] uppercase flex items-center gap-1 transition-all hover:opacity-80"
+              style={{ color: "var(--gold)", background: "none", border: "none", cursor: "pointer", padding: "2px 0" }}
             >
-              EN
+              {lang.toUpperCase()}
+              <svg width="8" height="5" viewBox="0 0 8 5" fill="none" style={{ transition: "transform 0.2s", transform: langOpen ? "rotate(180deg)" : "rotate(0deg)" }}>
+                <path d="M1 1L4 4L7 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </button>
-            <span className="font-body text-xs" style={{ color: light && !scrolled && !menuOpen ? "rgba(8,8,8,0.2)" : "rgba(245,240,232,0.2)", margin: "0 4px" }}>|</span>
-            <button
-              onClick={() => setLang("vi")}
-              className="font-body text-xs tracking-[0.15em] uppercase transition-all"
-              style={{ color: lang === "vi" ? "var(--gold)" : textColor, opacity: lang === "vi" ? 1 : 0.4, padding: "2px 0", background: "none", border: "none", cursor: "pointer" }}
-            >
-              VI
-            </button>
+            {langOpen && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "calc(100% + 12px)",
+                  right: 0,
+                  backgroundColor: "rgba(8,8,8,0.97)",
+                  border: "1px solid rgba(214,196,148,0.15)",
+                  backdropFilter: "blur(12px)",
+                  minWidth: "140px",
+                  zIndex: 100,
+                }}
+              >
+                {LANGUAGES.map(({ code, label }) => (
+                  <button
+                    key={code}
+                    onClick={() => { setLang(code); setLangOpen(false) }}
+                    className="font-body text-xs tracking-[0.15em] uppercase w-full text-left transition-all hover:opacity-100"
+                    style={{
+                      display: "block",
+                      padding: "12px 16px",
+                      color: lang === code ? "var(--gold)" : "var(--cream)",
+                      opacity: lang === code ? 1 : 0.55,
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      borderBottom: "1px solid rgba(245,240,232,0.06)",
+                    }}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <a
@@ -94,24 +148,33 @@ export default function Nav({ light }: { light?: boolean }) {
           </a>
         </div>
 
-        {/* mobile: language toggle + menu button */}
+        {/* mobile: language dropdown + menu button */}
         <div className="md:hidden flex items-center gap-3">
-          <div className="flex items-center gap-1">
+          <div ref={langMobileRef} style={{ position: "relative" }}>
             <button
-              onClick={() => setLang("en")}
-              className="font-body text-xs tracking-[0.1em] uppercase"
-              style={{ color: lang === "en" ? "var(--gold)" : textColor, opacity: lang === "en" ? 1 : 0.4, background: "none", border: "none", cursor: "pointer", padding: "2px 0" }}
+              onClick={() => setLangOpen(!langOpen)}
+              className="font-body text-xs tracking-[0.1em] uppercase flex items-center gap-1"
+              style={{ color: "var(--gold)", background: "none", border: "none", cursor: "pointer", padding: "2px 0" }}
             >
-              EN
+              {lang.toUpperCase()}
+              <svg width="8" height="5" viewBox="0 0 8 5" fill="none" style={{ transition: "transform 0.2s", transform: langOpen ? "rotate(180deg)" : "rotate(0deg)" }}>
+                <path d="M1 1L4 4L7 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </button>
-            <span className="font-body text-xs" style={{ color: "rgba(245,240,232,0.25)", margin: "0 2px" }}>|</span>
-            <button
-              onClick={() => setLang("vi")}
-              className="font-body text-xs tracking-[0.1em] uppercase"
-              style={{ color: lang === "vi" ? "var(--gold)" : textColor, opacity: lang === "vi" ? 1 : 0.4, background: "none", border: "none", cursor: "pointer", padding: "2px 0" }}
-            >
-              VI
-            </button>
+            {langOpen && (
+              <div style={{ position: "absolute", top: "calc(100% + 12px)", right: 0, backgroundColor: "rgba(8,8,8,0.97)", border: "1px solid rgba(214,196,148,0.15)", minWidth: "140px", zIndex: 100 }}>
+                {LANGUAGES.map(({ code, label }) => (
+                  <button
+                    key={code}
+                    onClick={() => { setLang(code); setLangOpen(false) }}
+                    className="font-body text-xs tracking-[0.1em] uppercase w-full text-left"
+                    style={{ display: "block", padding: "12px 16px", color: lang === code ? "var(--gold)" : "var(--cream)", opacity: lang === code ? 1 : 0.55, background: "none", border: "none", cursor: "pointer", borderBottom: "1px solid rgba(245,240,232,0.06)" }}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <button

@@ -31,7 +31,7 @@ export default async function Home() {
               fontSize: "clamp(100px, 18vw, 270px)",
               letterSpacing: "-0.02em",
               color: "transparent",
-              WebkitTextStroke: "1px rgba(201,168,76,0.18)",
+              WebkitTextStroke: "1px rgba(219,198,143,0.18)",
               whiteSpace: "nowrap",
               lineHeight: 1,
             }}
@@ -176,8 +176,8 @@ export default async function Home() {
           <span className="font-body text-xs tracking-[0.3em] uppercase" style={{ color: "rgba(245,240,232,0.3)" }}>
             SS26
           </span>
-          <div className="w-8 h-px" style={{ backgroundColor: "rgba(201,168,76,0.4)" }} />
-          <span className="font-display text-6xl" style={{ color: "rgba(201,168,76,0.08)", lineHeight: 1 }}>UV</span>
+          <div className="w-8 h-px" style={{ backgroundColor: "rgba(219,198,143,0.4)" }} />
+          <span className="font-display text-6xl" style={{ color: "rgba(219,198,143,0.08)", lineHeight: 1 }}>UV</span>
         </div>
       </section>
 
@@ -197,8 +197,8 @@ export default async function Home() {
           </div>
         </div>
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 bottom-0" style={{ left: "33.33%", width: "1px", backgroundColor: "rgba(201,168,76,0.25)" }} />
-          <div className="absolute top-0 bottom-0" style={{ left: "66.66%", width: "1px", backgroundColor: "rgba(201,168,76,0.25)" }} />
+          <div className="absolute top-0 bottom-0" style={{ left: "33.33%", width: "1px", backgroundColor: "rgba(219,198,143,0.25)" }} />
+          <div className="absolute top-0 bottom-0" style={{ left: "66.66%", width: "1px", backgroundColor: "rgba(219,198,143,0.25)" }} />
         </div>
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <span

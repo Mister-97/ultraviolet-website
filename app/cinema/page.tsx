@@ -87,12 +87,12 @@ export default function CinemaPage() {
               <div
                 key={p.title}
                 className="relative flex flex-col items-center justify-center"
-                style={{ aspectRatio: "16/9", backgroundColor: "#0d0d0d", border: "1px solid rgba(201,168,76,0.08)" }}
+                style={{ aspectRatio: "16/9", backgroundColor: "#0d0d0d", border: "1px solid rgba(219,198,143,0.08)" }}
               >
-                <div className="w-12 h-px mb-4" style={{ backgroundColor: "rgba(201,168,76,0.3)" }} />
+                <div className="w-12 h-px mb-4" style={{ backgroundColor: "rgba(219,198,143,0.3)" }} />
                 <p className="font-display text-2xl tracking-widest mb-2" style={{ color: "rgba(245,240,232,0.2)" }}>{p.title}</p>
-                <p className="font-body text-xs tracking-[0.4em] uppercase" style={{ color: "rgba(201,168,76,0.3)" }}>{p.desc}</p>
-                <div className="w-12 h-px mt-4" style={{ backgroundColor: "rgba(201,168,76,0.3)" }} />
+                <p className="font-body text-xs tracking-[0.4em] uppercase" style={{ color: "rgba(219,198,143,0.3)" }}>{p.desc}</p>
+                <div className="w-12 h-px mt-4" style={{ backgroundColor: "rgba(219,198,143,0.3)" }} />
               </div>
             ))}
           </div>
@@ -104,9 +104,9 @@ export default function CinemaPage() {
       <section className="cinema-commitment">
         <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
           <div className="flex items-center justify-center gap-6" style={{ marginBottom: "40px" }}>
-            <div className="h-px flex-1" style={{ backgroundColor: "rgba(201,168,76,0.25)" }} />
+            <div className="h-px flex-1" style={{ backgroundColor: "rgba(219,198,143,0.25)" }} />
             <p className="font-body text-xs tracking-[0.5em] uppercase" style={{ color: "var(--gold)" }}>Our Commitment</p>
-            <div className="h-px flex-1" style={{ backgroundColor: "rgba(201,168,76,0.25)" }} />
+            <div className="h-px flex-1" style={{ backgroundColor: "rgba(219,198,143,0.25)" }} />
           </div>
 
           <h2 className="font-display leading-none mb-8" style={{ fontSize: "clamp(40px, 6vw, 80px)", color: "var(--cream)", letterSpacing: "0.02em" }}>
@@ -121,9 +121,9 @@ export default function CinemaPage() {
           </p>
 
           <div className="flex items-center justify-center gap-3" style={{ marginBottom: "40px" }}>
-            <div className="w-8 h-px" style={{ backgroundColor: "rgba(201,168,76,0.4)" }} />
-            <p className="font-body text-xs tracking-[0.4em] uppercase" style={{ color: "rgba(201,168,76,0.5)" }}>UltraViolet</p>
-            <div className="w-8 h-px" style={{ backgroundColor: "rgba(201,168,76,0.4)" }} />
+            <div className="w-8 h-px" style={{ backgroundColor: "rgba(219,198,143,0.4)" }} />
+            <p className="font-body text-xs tracking-[0.4em] uppercase" style={{ color: "rgba(219,198,143,0.5)" }}>UltraViolet</p>
+            <div className="w-8 h-px" style={{ backgroundColor: "rgba(219,198,143,0.4)" }} />
           </div>
 
           <a

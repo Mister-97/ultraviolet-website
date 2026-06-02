@@ -25,7 +25,7 @@ export default function Nav({ light }: { light?: boolean }) {
       style={{
         backgroundColor: menuOpen ? "var(--black)" : scrolled ? "rgba(8,8,8,0.95)" : light ? "rgba(245,240,232,0.0)" : "transparent",
         backdropFilter: scrolled && !menuOpen ? "blur(12px)" : "none",
-        borderBottom: scrolled && !menuOpen ? "1px solid rgba(201,168,76,0.15)" : "none",
+        borderBottom: scrolled && !menuOpen ? "1px solid rgba(219,198,143,0.15)" : "none",
       }}
     >
       <div className="flex items-center justify-between py-5" style={{ paddingLeft: "20px", paddingRight: "20px" }}>
@@ -87,7 +87,7 @@ export default function Nav({ light }: { light?: boolean }) {
           style={{
             backgroundColor: "var(--black)",
             padding: "32px 24px 48px",
-            borderTop: "1px solid rgba(201,168,76,0.12)",
+            borderTop: "1px solid rgba(219,198,143,0.12)",
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>

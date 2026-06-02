@@ -1,5 +1,7 @@
 "use client"
 import { createContext, useContext, useState, useEffect, ReactNode } from "react"
+import { useLang } from "@/context/LanguageContext"
+import { LANG_CURRENCY } from "@/lib/currency"
 
 type CartItem = { variantId: number; quantity: number; title: string; price: string }
 type CartCtx = {
@@ -11,10 +13,13 @@ type CartCtx = {
 
 const CartContext = createContext<CartCtx>({ items: [], count: 0, addToCart: () => {}, checkoutUrl: "" })
 
-const DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN ?? ""
+const DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_CHECKOUT_DOMAIN
+  ?? process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
+  ?? ""
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
+  const { lang } = useLang()
 
   useEffect(() => {
     try {
@@ -22,11 +27,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (saved) setItems(JSON.parse(saved))
     } catch {}
   }, [])
-
-  const save = (next: CartItem[]) => {
-    setItems(next)
-    localStorage.setItem("uv-cart", JSON.stringify(next))
-  }
 
   const addToCart = (variantId: number, title: string, price: string) => {
     setItems(prev => {
@@ -40,8 +40,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }
 
   const count = items.reduce((s, i) => s + i.quantity, 0)
+  const currency = LANG_CURRENCY[lang]
   const checkoutUrl = items.length
-    ? `https://${DOMAIN}/cart/${items.map(i => `${i.variantId}:${i.quantity}`).join(",")}`
+    ? `https://${DOMAIN}/cart/${items.map(i => `${i.variantId}:${i.quantity}`).join(",")}?currency=${currency}`
     : `/shop`
 
   return (

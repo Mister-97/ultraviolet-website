@@ -7,6 +7,7 @@ import PriceTag from "@/components/PriceTag"
 import { useCart } from "@/context/CartContext"
 import { useLang } from "@/context/LanguageContext"
 import { useT } from "@/lib/translations"
+import { LANG_CURRENCY } from "@/lib/currency"
 
 const SKULLCAP_VIDEO_START = 8.71
 const CAP_VIDEO_END = 7
@@ -24,6 +25,7 @@ export default function ProductPageContent({ product, handle, checkoutUrl, descr
   const [added, setAdded] = useState(false)
   const { lang } = useLang()
   const tr = useT(lang)
+  const buyUrl = `${checkoutUrl}?currency=${LANG_CURRENCY[lang]}`
 
   const handleAddToCart = () => {
     addToCart(product.variants[0].id as unknown as number, product.title, product.variants[0].price)
@@ -91,7 +93,7 @@ export default function ProductPageContent({ product, handle, checkoutUrl, descr
             </button>
 
             <a
-              href={checkoutUrl}
+              href={buyUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="font-body text-xs tracking-[0.4em] uppercase font-medium transition-all hover:opacity-80"

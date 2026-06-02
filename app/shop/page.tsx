@@ -15,16 +15,19 @@ export default async function ShopPage() {
       <Nav />
 
       {/* header */}
-      <section style={{ backgroundColor: "var(--black)", paddingTop: "clamp(90px, 12vh, 140px)", paddingBottom: "10px", paddingLeft: "0px", paddingRight: "20px" }}>
-          <h1 className="font-display leading-none" style={{ fontSize: "clamp(76px, 14vw, 236px)", color: "var(--cream)", letterSpacing: "0.01em" }}>
+      <section className="cinema-header" style={{ backgroundColor: "var(--black)" }}>
+        <div className="max-w-7xl mx-auto">
+          <p className="font-body text-xs tracking-[0.4em] uppercase mb-4" style={{ color: "var(--gold)" }}>SS26 Collection</p>
+          <h1 className="font-display leading-none" style={{ fontSize: "clamp(80px, 14vw, 200px)", color: "var(--cream)", letterSpacing: "0.01em" }}>
             Shop
           </h1>
+        </div>
       </section>
 
       <Marquee />
 
-      <main style={{ paddingTop: "60px", paddingBottom: "60px", paddingLeft: "40px", paddingRight: "40px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "32px" }}>
+      <main className="shop-main">
+        <div className="shop-grid">
 
           {products.map((product) => (
             <Link href={`/products/${product.handle}`} key={product.id} style={{ textDecoration: "none" }} className="group block">
@@ -37,7 +40,7 @@ export default async function ShopPage() {
                 />
               </div>
               {/* centered title + price */}
-              <p className="font-display" style={{ fontSize: "clamp(20px, 2.2vw, 30px)", letterSpacing: "0.02em", color: "var(--black)", textAlign: "center", marginBottom: "4px" }}>
+              <p className="font-display shop-product-title" style={{ letterSpacing: "0.02em", color: "var(--black)", textAlign: "center", marginBottom: "4px" }}>
                 {product.title}
               </p>
               <p className="font-body text-sm" style={{ color: "var(--gray)", textAlign: "center" }}>
@@ -55,7 +58,7 @@ export default async function ShopPage() {
                 style={{ width: "100%", height: "auto", display: "block", marginBottom: "-36%" }}
               />
             </div>
-            <p className="font-display" style={{ fontSize: "clamp(20px, 2.2vw, 30px)", letterSpacing: "0.02em", color: "var(--black)", textAlign: "center", marginBottom: "4px" }}>
+            <p className="font-display shop-product-title" style={{ letterSpacing: "0.02em", color: "var(--black)", textAlign: "center", marginBottom: "4px" }}>
               UV Signature Belt
             </p>
             <p className="font-body text-xs tracking-[0.2em] uppercase" style={{ color: "var(--gray)", textAlign: "center" }}>

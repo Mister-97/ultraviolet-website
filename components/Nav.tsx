@@ -14,7 +14,7 @@ export default function Nav({ light }: { light?: boolean }) {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  const links: [string, string][] = [["Home", "/"], ["Shop", "/shop"], ["Cinema", "/cinema"], ["Story", "/#story"]]
+  const links: [string, string][] = [["Home", "/"], ["Shop", "/shop"], ["Cinema", "/cinema"], ["Story", "/story"]]
 
   const textColor = light && !scrolled && !menuOpen ? "var(--black)" : "var(--cream)"
   const { count, checkoutUrl } = useCart()

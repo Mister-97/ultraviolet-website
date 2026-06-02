@@ -28,7 +28,7 @@ export default async function Home() {
           <span
             className="font-display select-none"
             style={{
-              fontSize: "clamp(120px, 22vw, 320px)",
+              fontSize: "clamp(100px, 18vw, 270px)",
               letterSpacing: "-0.02em",
               color: "transparent",
               WebkitTextStroke: "1px rgba(201,168,76,0.18)",
@@ -41,7 +41,7 @@ export default async function Home() {
         </div>
 
         {/* left: headline */}
-        <div className="relative z-10 px-6 md:px-14 pb-14 md:pb-20" style={{ flex: 1 }}>
+        <div className="hero-headline-col relative z-10 px-6 md:px-14 pb-14 md:pb-20" style={{ flex: 1 }}>
           <p className="font-body text-xs tracking-[0.5em] uppercase mb-4 fade-up" style={{ color: "var(--gold)" }}>
             SS26 Collection
           </p>
@@ -70,7 +70,7 @@ export default async function Home() {
             Shop Now
           </Link>
           <Link
-            href="/#story"
+            href="/story"
             className="font-body tracking-[0.2em] uppercase transition-all hover:opacity-80 text-center"
             style={{ border: "1px solid rgba(245,240,232,0.5)", color: "var(--cream)", padding: "20px 48px", fontSize: "16px" }}
           >
@@ -79,11 +79,9 @@ export default async function Home() {
         </div>
 
         {/* mobile CTA */}
-        <div className="relative z-10 md:hidden flex gap-3 px-6 pb-10 fade-up-delay-2">
-          <Link href="/shop" className="font-body text-xs tracking-[0.3em] uppercase px-6 py-4 transition-all hover:opacity-80"
-            style={{ backgroundColor: "var(--gold)", color: "var(--black)" }}>Shop Now</Link>
-          <Link href="/#story" className="font-body text-xs tracking-[0.3em] uppercase px-6 py-4 transition-all hover:opacity-80"
-            style={{ border: "1px solid rgba(245,240,232,0.4)", color: "var(--cream)" }}>Our Story</Link>
+        <div className="md:hidden z-10 fade-up-delay-2" style={{ position: "absolute", bottom: "21px", right: "20px" }}>
+          <Link href="/shop" className="font-body text-xs tracking-[0.3em] uppercase transition-all hover:opacity-80 inline-block"
+            style={{ backgroundColor: "var(--gold)", color: "var(--black)", padding: "11px 28px" }}>Shop Now</Link>
         </div>
 
       </section>
@@ -91,10 +89,10 @@ export default async function Home() {
       <Marquee />
 
       {/* 2026 COLLECTION: dark section with heading left + models right */}
-      <section className="relative" style={{ backgroundColor: "var(--cream)", minHeight: "80vh", display: "flex" }}>
+      <section className="collection-section relative" style={{ backgroundColor: "var(--cream)" }}>
 
         {/* left: heading */}
-        <div className="relative z-10 flex flex-col justify-center" style={{ padding: "60px 48px 60px 48px", minWidth: "320px", flexShrink: 0, gap: "32px", textAlign: "center" }}>
+        <div className="collection-left relative z-10">
           <h2
             className="font-display leading-none"
             style={{ fontSize: "clamp(64px, 7vw, 120px)", color: "var(--black)", letterSpacing: "0.01em" }}
@@ -110,21 +108,28 @@ export default async function Home() {
           </Link>
         </div>
 
-        {/* right: models */}
-        <div className="flex-1 flex items-end justify-center" style={{ gap: "0", paddingBottom: "40px" }}>
-          {["/model-b.png", "/model-d.png", "/model-a.png", "/model-c.png"].map((src, i) => (
-            <div
-              key={src}
-              className="model-img"
-              style={{ flexShrink: 0, marginBottom: i === 2 ? "14px" : "0", marginLeft: i === 3 ? "20px" : "0", mixBlendMode: "multiply" }}
-            >
-              <img
-                src={src}
-                alt={`UV 2026 Look ${i + 1}`}
-                style={{ height: i === 2 ? "50vh" : i === 0 ? "60vh" : "65vh", width: "auto", display: "block" }}
-              />
-            </div>
-          ))}
+        {/* right: models — desktop: 4 individuals, mobile: single combined image */}
+        <div className="collection-right">
+          <div className="collection-models-desktop">
+            {["/model-b.png", "/model-d.png", "/model-a.png", "/model-c.png"].map((src, i) => (
+              <div
+                key={src}
+                className="model-img"
+                style={{ flexShrink: 0, marginBottom: i === 2 ? "14px" : "0", marginLeft: i === 3 ? "20px" : "0", mixBlendMode: "multiply" }}
+              >
+                <img
+                  src={src}
+                  alt={`UV 2026 Look ${i + 1}`}
+                  style={{ height: i === 2 ? "50vh" : i === 0 ? "60vh" : "65vh", width: "auto", display: "block" }}
+                />
+              </div>
+            ))}
+          </div>
+          <img
+            src="/uvmodels.png"
+            alt="UltraViolet 2026 Collection"
+            className="collection-models-mobile"
+          />
         </div>
 
       </section>
@@ -177,7 +182,7 @@ export default async function Home() {
       </section>
 
       {/* EDITORIAL STRIP: three models side by side with UV 2026 overlay */}
-      <section className="relative overflow-hidden" style={{ height: "80vh", minHeight: "500px" }}>
+      <section className="editorial-strip relative overflow-hidden">
         <div className="absolute inset-0 grid grid-cols-3">
           <div className="relative overflow-hidden">
             <Image src="/editorial_hammock.jpg" alt="UltraViolet SS26" fill className="object-cover object-center" unoptimized />

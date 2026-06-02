@@ -19,6 +19,11 @@ const grotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "UltraViolet",
   description: "Hard streetwear. Built different.",
+  openGraph: {
+    title: "UltraViolet",
+    description: "Hard streetwear. Built different.",
+    images: [{ url: "/og-image.jpg", width: 800, height: 1000 }],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

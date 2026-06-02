@@ -126,6 +126,28 @@ body::before {
 
 
 
+/* story page */
+.story-standsfor { padding: 20px 24px 60px; }
+@media (min-width: 768px) {
+  .story-standsfor { padding: 80px 24px; }
+}
+
+/* shop page */
+.shop-main { padding: 40px 16px 100px; }
+@media (min-width: 768px) {
+  .shop-main { padding: 60px 40px 80px; }
+}
+
+/* shop grid */
+.shop-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+@media (min-width: 768px) {
+  .shop-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+}
+.shop-product-title { font-size: clamp(18px, 5vw, 30px); }
+@media (min-width: 768px) {
+  .shop-product-title { font-size: clamp(20px, 2.2vw, 30px); }
+}
+
 /* product page */
 .product-back { padding-top: 80px; padding-bottom: 24px; padding-left: 40px; padding-right: 40px; }
 .product-wrap { padding-left: 40px; padding-right: 40px; padding-bottom: 80px; }
@@ -146,6 +168,28 @@ body::before {
   .product-thumbs::-webkit-scrollbar { display: none; }
   .product-thumb { width: 80px; min-width: 80px; flex-shrink: 0; }
   .product-title { font-size: clamp(32px, 9vw, 56px); }
+}
+
+/* 2026 collection section */
+.collection-section { display: flex; flex-direction: row; min-height: 80vh; }
+.collection-left { padding: 60px 48px; min-width: 320px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; gap: 32px; text-align: center; }
+.collection-right { flex: 1; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 40px; }
+
+.editorial-strip { height: 80vh; min-height: 500px; }
+@media (max-width: 767px) {
+  .editorial-strip { height: 100vw; min-height: unset; }
+}
+
+.collection-models-desktop { display: flex; align-items: flex-end; gap: 0; }
+.collection-models-mobile { display: none; }
+
+@media (max-width: 767px) {
+  .hero-headline-col { padding-bottom: 9px; padding-inline-start: 10px !important; }
+  .collection-section { flex-direction: column; min-height: auto; }
+  .collection-left { min-width: unset; padding: 40px 24px 24px; gap: 20px; }
+  .collection-right { padding-bottom: 0; justify-content: center; overflow: hidden; }
+  .collection-models-desktop { display: none; }
+  .collection-models-mobile { display: block; width: 100%; mix-blend-mode: multiply; padding-bottom: 32px; }
 }
 
 /* clipping / diagonal divider */

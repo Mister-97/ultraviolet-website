@@ -3,12 +3,28 @@ import { useEffect, useState } from "react"
 
 const STORAGE_KEY = "uv-cookie-consent"
 
+const EU_COUNTRIES = new Set([
+  "AT","BE","BG","CY","CZ","DE","DK","EE","ES","FI","FR","GR","HR",
+  "HU","IE","IT","LT","LU","LV","MT","NL","PL","PT","RO","SE","SI","SK",
+])
+
+async function isEU(): Promise<boolean> {
+  try {
+    const res = await fetch("https://ipapi.co/json/", { signal: AbortSignal.timeout(3000) })
+    const data = await res.json()
+    return EU_COUNTRIES.has(data.country_code)
+  } catch {
+    return false
+  }
+}
+
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY)
-    if (!saved) setVisible(true)
+    if (saved) return
+    isEU().then(eu => { if (eu) setVisible(true) })
   }, [])
 
   const accept = () => {

@@ -13,9 +13,7 @@ type CartCtx = {
 
 const CartContext = createContext<CartCtx>({ items: [], count: 0, addToCart: () => {}, checkoutUrl: "" })
 
-const DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_CHECKOUT_DOMAIN
-  ?? process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
-  ?? ""
+const DOMAIN = "5z9s2c-fx.myshopify.com"
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])

@@ -50,6 +50,9 @@ export default function Footer() {
           <Link href="/policies/terms" className="font-body text-sm hover:opacity-60 transition-opacity" style={{ color: "var(--cream)" }}>
             {tr("footerTerms")}
           </Link>
+          <Link href="/policies/refund" className="font-body text-sm hover:opacity-60 transition-opacity" style={{ color: "var(--cream)" }}>
+            Refund Policy
+          </Link>
         </div>
 
         <div className="flex flex-col gap-4">
@@ -58,6 +61,12 @@ export default function Footer() {
             className="font-body text-sm hover:opacity-60 transition-opacity"
             style={{ color: "var(--cream)" }}>
             {tr("footerInstagram")}
+          </a>
+          <p className="font-body text-xs tracking-[0.3em] uppercase mt-4 mb-2" style={{ color: "var(--gold)" }}>Support</p>
+          <a href="mailto:ultra.violet.uvlt@gmail.com"
+            className="font-body text-sm hover:opacity-60 transition-opacity"
+            style={{ color: "var(--cream)" }}>
+            ultra.violet.uvlt@gmail.com
           </a>
         </div>
       </div>

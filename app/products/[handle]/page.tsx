@@ -19,7 +19,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   return (
     <>
       <Nav light />
-      <main style={{ backgroundColor: "var(--cream)", overflowX: "clip" }}>
+      <main style={{ backgroundColor: "var(--cream)" }}>
         <ProductPageContent
           product={product}
           handle={handle}

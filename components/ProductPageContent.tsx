@@ -70,7 +70,7 @@ export default function ProductPageContent({ product, handle, checkoutUrl, descr
             </p>
             <h1
               className="product-title font-display leading-none"
-              style={{ fontSize: "clamp(48px, 7vw, 96px)", letterSpacing: "0.01em", marginBottom: "24px" }}
+              style={{ letterSpacing: "0.01em", marginBottom: "24px" }}
             >
               {product.title}
             </h1>

@@ -157,17 +157,19 @@ body::before {
 .product-img-box { background-color: #ECEAE3; aspect-ratio: 1/1; position: relative; overflow: hidden; }
 .product-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
 .product-thumb { background-color: #ECEAE3; aspect-ratio: 1/1; position: relative; overflow: hidden; cursor: pointer; }
+.product-title { font-size: clamp(48px, 7vw, 96px); }
 @media (max-width: 767px) {
-  .product-back { padding-top: 72px; padding-left: 20px; padding-right: 20px; }
-  .product-wrap { padding-left: 16px; padding-right: 16px; padding-bottom: 60px; }
-  .product-cols { grid-template-columns: 1fr; gap: 24px; }
-  .product-info { padding-top: 0; }
-  .product-img-wrap { position: static; }
-  .product-img-box { aspect-ratio: 4/3; }
+  .product-back { padding-top: 72px; padding-left: 16px; padding-right: 16px; }
+  .product-wrap { padding-left: 16px; padding-right: 16px; padding-bottom: 60px; width: 100%; box-sizing: border-box; }
+  /* block instead of grid — eliminates min-width:auto overflow */
+  .product-cols { display: block; }
+  .product-img-wrap { position: static; width: 100%; margin-bottom: 24px; }
+  .product-img-box { width: 100%; height: 320px; aspect-ratio: unset; }
+  .product-info { padding-top: 0; width: 100%; box-sizing: border-box; }
   .product-thumbs { display: flex; flex-direction: row; gap: 8px; margin-top: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .product-thumbs::-webkit-scrollbar { display: none; }
-  .product-thumb { width: 80px; min-width: 80px; flex-shrink: 0; }
-  .product-title { font-size: clamp(32px, 9vw, 56px); }
+  .product-thumb { width: 72px; min-width: 72px; flex-shrink: 0; }
+  .product-title { font-size: clamp(28px, 8vw, 48px) !important; overflow-wrap: break-word; word-break: break-word; }
 }
 
 /* 2026 collection section */

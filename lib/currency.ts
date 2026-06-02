@@ -39,6 +39,9 @@ async function getRates(): Promise<Record<CurrencyCode, number>> {
   }
 }
 
+// $25 USD international shipping baked into displayed price for non-VN customers
+const INTL_SHIPPING_USD = 25
+
 export async function convertAndFormat(priceVnd: string, lang: Lang): Promise<string> {
   const num = parseFloat(priceVnd)
   const currency = LANG_CURRENCY[lang]
@@ -48,7 +51,9 @@ export async function convertAndFormat(priceVnd: string, lang: Lang): Promise<st
   }
 
   const rates = await getRates()
-  const converted = num * rates[currency]
+  // convert base price, then add $25 shipping in display currency
+  const shippingInCurrency = INTL_SHIPPING_USD * (rates[currency] / rates["USD"])
+  const converted = num * rates[currency] + shippingInCurrency
 
   const locale: Record<CurrencyCode, string> = {
     USD: "en-US", EUR: "de-DE", KRW: "ko-KR", JPY: "ja-JP", GBP: "en-GB", VND: "vi-VN",

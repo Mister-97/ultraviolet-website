@@ -2,24 +2,14 @@
 import { useRef, useState } from "react"
 import Link from "next/link"
 import ProductGallery from "@/components/ProductGallery"
-import { formatPrice } from "@/lib/shopify"
+import { formatPrice, ShopifyProduct } from "@/lib/shopify"
 import { useCart } from "@/context/CartContext"
 
 const SKULLCAP_VIDEO_START = 8.71
 const CAP_VIDEO_END = 7
 
-type Variant = { id: string | number; price: string }
-type ProductImage = { id: string; src: string }
-type Product = {
-  title: string
-  vendor: string
-  body_html: string
-  variants: Variant[]
-  images: ProductImage[]
-}
-
 type Props = {
-  product: Product
+  product: ShopifyProduct
   handle: string
   checkoutUrl: string
   description: string

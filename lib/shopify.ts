@@ -1,5 +1,7 @@
 const domain = process.env.SHOPIFY_STORE_DOMAIN!
 const token = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN!
+// Checkout must always go to the .myshopify.com domain, not the custom domain pointed at Vercel
+const checkoutDomain = process.env.SHOPIFY_CHECKOUT_DOMAIN ?? domain
 
 export interface ShopifyProduct {
   id: number
@@ -57,5 +59,5 @@ export function formatPrice(price: string): string {
 }
 
 export function getCheckoutUrl(variantId: number): string {
-  return `https://${domain}/cart/${variantId}:1`
+  return `https://${checkoutDomain}/cart/${variantId}:1`
 }

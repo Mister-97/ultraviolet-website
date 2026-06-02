@@ -15,7 +15,7 @@ export default function Footer() {
             width={220}
             height={80}
             className="object-contain mb-4"
-            style={{ height: "60px", width: "auto" }}
+            style={{ height: "60px", width: "auto", filter: "saturate(0.62) brightness(1.28)" }}
           />
           <p className="font-body text-sm leading-relaxed max-w-xs" style={{ color: "var(--gray)" }}>
             Hard streetwear. Built for those who move with intention.

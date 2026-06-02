@@ -36,7 +36,7 @@ export default function Nav({ light }: { light?: boolean }) {
             width={160}
             height={60}
             className="object-contain"
-            style={{ height: "44px", width: "auto" }}
+            style={{ height: "44px", width: "auto", filter: "saturate(0.62) brightness(1.28)" }}
             priority
           />
         </Link>

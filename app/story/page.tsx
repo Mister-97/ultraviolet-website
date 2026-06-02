@@ -41,9 +41,9 @@ export default function StoryPage() {
 
           {/* ruled label */}
           <div style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "40px" }}>
-            <div style={{ flex: 1, height: "1px", backgroundColor: "rgba(219,198,143,0.35)" }} />
+            <div style={{ flex: 1, height: "1px", backgroundColor: "rgba(214,196,148,0.35)" }} />
             <span className="font-body text-xs tracking-[0.4em] uppercase" style={{ color: "var(--gold)", whiteSpace: "nowrap" }}>The Beginning</span>
-            <div style={{ flex: 1, height: "1px", backgroundColor: "rgba(219,198,143,0.35)" }} />
+            <div style={{ flex: 1, height: "1px", backgroundColor: "rgba(214,196,148,0.35)" }} />
           </div>
 
           <h2 className="font-display leading-none mb-8" style={{ fontSize: "clamp(52px, 9vw, 130px)", color: "var(--cream)", letterSpacing: "0.01em" }}>
@@ -58,9 +58,9 @@ export default function StoryPage() {
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: "20px", margin: "0 0 48px" }}>
-            <div style={{ flex: 1, height: "1px", backgroundColor: "rgba(219,198,143,0.2)" }} />
+            <div style={{ flex: 1, height: "1px", backgroundColor: "rgba(214,196,148,0.2)" }} />
             <span className="font-body text-xs tracking-[0.4em] uppercase" style={{ color: "var(--gold)" }}>UltraViolet</span>
-            <div style={{ flex: 1, height: "1px", backgroundColor: "rgba(219,198,143,0.2)" }} />
+            <div style={{ flex: 1, height: "1px", backgroundColor: "rgba(214,196,148,0.2)" }} />
           </div>
 
           <Link

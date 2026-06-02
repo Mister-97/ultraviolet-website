@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --gold: #dbc68f;
+  --gold: #d6c494;
   --gold-light: #E8C96A;
   --cream: #F5F0E8;
   --black: #080808;
@@ -103,7 +103,7 @@ body::before {
 }
 .cinema-commitment {
   background-color: var(--black);
-  border-top: 1px solid rgba(219,198,143,0.12);
+  border-top: 1px solid rgba(214,196,148,0.12);
   padding: 60px 24px;
 }
 @media (min-width: 768px) {

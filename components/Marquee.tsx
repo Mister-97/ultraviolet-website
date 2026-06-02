@@ -7,7 +7,7 @@ export default function Marquee({ dark = false }: { dark?: boolean }) {
       className="overflow-hidden py-4 border-y"
       style={{
         backgroundColor: dark ? "var(--black)" : "var(--gold)",
-        borderColor: dark ? "rgba(219,198,143,0.2)" : "transparent",
+        borderColor: dark ? "rgba(214,196,148,0.2)" : "transparent",
       }}
     >
       <div className="marquee-track">

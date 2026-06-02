@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Bebas_Neue, Space_Grotesk } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 import { CartProvider } from "@/context/CartContext"
 import { LanguageProvider } from "@/context/LanguageContext"
@@ -75,6 +76,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-full flex flex-col">
         <LanguageProvider><CartProvider>{children}<CookieBanner /></CartProvider></LanguageProvider>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-HFJ4CBJMWD" strategy="afterInteractive" />
+        <Script id="ga4" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HFJ4CBJMWD');
+        `}</Script>
       </body>
     </html>
   )

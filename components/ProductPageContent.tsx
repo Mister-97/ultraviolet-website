@@ -8,7 +8,7 @@ import { useCart } from "@/context/CartContext"
 const SKULLCAP_VIDEO_START = 8.71
 const CAP_VIDEO_END = 7
 
-type Variant = { id: string; price: string }
+type Variant = { id: string | number; price: string }
 type ProductImage = { id: string; src: string }
 type Product = {
   title: string

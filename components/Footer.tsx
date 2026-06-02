@@ -68,6 +68,19 @@ export default function Footer() {
             style={{ color: "var(--cream)" }}>
             ultra.violet.uvlt@gmail.com
           </a>
+          <p className="font-body text-xs tracking-[0.3em] uppercase mt-4 mb-2" style={{ color: "var(--gold)" }}>Contact Us</p>
+          <p className="font-body text-sm leading-relaxed" style={{ color: "var(--gray)" }}>
+            For any further inquiries, please contact us via direct message on{" "}
+            <a
+              href="https://www.instagram.com/ultraviolet_vn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-60 transition-opacity"
+              style={{ color: "var(--cream)", textDecoration: "underline", textUnderlineOffset: "3px" }}
+            >
+              Instagram
+            </a>
+          </p>
         </div>
       </div>
 

@@ -7,7 +7,7 @@ export default function Footer() {
     <footer style={{ backgroundColor: "var(--black)" }}>
       <Marquee dark />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4" style={{ padding: "40px 30px", gap: "40px" }}>
         <div className="col-span-2">
           <Image
             src="/uv-logo.png"
@@ -24,29 +24,29 @@ export default function Footer() {
 
         <div className="flex flex-col gap-4">
           <p className="font-body text-xs tracking-[0.3em] uppercase mb-2" style={{ color: "var(--gold)" }}>Navigate</p>
-          {["Shop", "Collections", "Story"].map((l) => (
-            <Link key={l} href={l === "Story" ? "/#story" : `/${l.toLowerCase()}`}
+          {[["Shop", "/shop"], ["Cinema", "/cinema"], ["Story", "/#story"]].map(([l, href]) => (
+            <Link key={l} href={href}
               className="font-body text-sm hover:opacity-60 transition-opacity"
               style={{ color: "var(--cream)" }}>
               {l}
             </Link>
           ))}
+
         </div>
 
         <div className="flex flex-col gap-4">
           <p className="font-body text-xs tracking-[0.3em] uppercase mb-2" style={{ color: "var(--gold)" }}>Follow</p>
-          {["Instagram", "TikTok", "Twitter"].map((s) => (
-            <a key={s} href="#"
-              className="font-body text-sm hover:opacity-60 transition-opacity"
-              style={{ color: "var(--cream)" }}>
-              {s}
-            </a>
-          ))}
+          <a href="https://www.instagram.com/ultraviolet_vn/" target="_blank" rel="noopener noreferrer"
+            className="font-body text-sm hover:opacity-60 transition-opacity"
+            style={{ color: "var(--cream)" }}>
+            Instagram
+          </a>
         </div>
       </div>
 
       <div
-        className="border-t px-6 md:px-10 py-6 flex flex-col md:flex-row justify-between items-center gap-3"
+        className="border-t flex flex-col md:flex-row justify-between items-center gap-3"
+        style={{ padding: "16px 30px" }}
         style={{ borderColor: "rgba(255,255,255,0.06)" }}
       >
         <p className="font-body text-xs" style={{ color: "var(--gray)" }}>2026 UltraViolet. All rights reserved.</p>

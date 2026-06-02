@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Bebas_Neue, Space_Grotesk } from "next/font/google"
 import "./globals.css"
+import { CartProvider } from "@/context/CartContext"
 
 const bebas = Bebas_Neue({
   weight: "400",
@@ -22,9 +23,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${bebas.variable} ${grotesk.variable} h-full`}>
+    <html lang="en" className={`${bebas.variable} ${grotesk.variable} h-full`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
-        {children}
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   )

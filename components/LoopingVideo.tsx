@@ -23,6 +23,7 @@ export default function LoopingVideo({ src, loopAt, className, style }: {
       loop
       playsInline
       autoPlay
+      preload="none"
       onTimeUpdate={handleTimeUpdate}
       className={className}
       style={style}

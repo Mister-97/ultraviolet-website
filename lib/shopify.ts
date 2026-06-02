@@ -28,7 +28,7 @@ export async function getProducts(): Promise<ShopifyProduct[]> {
     `https://${domain}/admin/api/2024-01/products.json?status=active`,
     {
       headers: { 'X-Shopify-Access-Token': token },
-      next: { revalidate: 60 },
+      next: { revalidate: 3600 },
     }
   )
   const data = await res.json()
@@ -40,7 +40,7 @@ export async function getProduct(handle: string): Promise<ShopifyProduct | null>
     `https://${domain}/admin/api/2024-01/products.json?handle=${handle}&status=active`,
     {
       headers: { 'X-Shopify-Access-Token': token },
-      next: { revalidate: 60 },
+      next: { revalidate: 3600 },
     }
   )
   const data = await res.json()

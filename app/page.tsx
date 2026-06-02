@@ -185,14 +185,14 @@ export default async function Home() {
       <section className="editorial-strip relative overflow-hidden">
         <div className="absolute inset-0 grid grid-cols-3">
           <div className="relative overflow-hidden">
-            <Image src="/editorial_hammock.jpg" alt="UltraViolet SS26" fill className="object-cover object-center" unoptimized />
+            <Image src="/editorial_hammock.jpg" alt="UltraViolet SS26" fill className="object-cover object-center"  />
             <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(8,8,8,0.15) 0%, rgba(8,8,8,0) 100%)" }} />
           </div>
           <div className="relative overflow-hidden">
-            <Image src="/editorial_beach.jpg" alt="UltraViolet SS26" fill className="object-cover object-center" unoptimized />
+            <Image src="/editorial_beach.jpg" alt="UltraViolet SS26" fill className="object-cover object-center"  />
           </div>
           <div className="relative overflow-hidden">
-            <Image src="/editorial_closeup.jpg" alt="UltraViolet SS26" fill className="object-cover object-center" unoptimized />
+            <Image src="/editorial_closeup.jpg" alt="UltraViolet SS26" fill className="object-cover object-center"  />
             <div className="absolute inset-0" style={{ background: "linear-gradient(to left, rgba(8,8,8,0.15) 0%, rgba(8,8,8,0) 100%)" }} />
           </div>
         </div>

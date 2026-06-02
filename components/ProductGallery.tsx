@@ -20,7 +20,7 @@ export default function ProductGallery({ mainSrc, thumbnails, alt }: Props) {
           fill
           style={{ objectFit: "contain", padding: "32px" }}
           priority
-          unoptimized
+         
         />
       </div>
       {thumbnails.length > 0 && (
@@ -32,7 +32,7 @@ export default function ProductGallery({ mainSrc, thumbnails, alt }: Props) {
               className="product-thumb"
               style={{ outline: active === src ? "2px solid var(--gold)" : "none" }}
             >
-              <Image src={src} alt={alt} fill style={{ objectFit: "cover", objectPosition: "top" }} unoptimized />
+              <Image src={src} alt={alt} fill style={{ objectFit: "cover", objectPosition: "top" }}  />
             </div>
           ))}
         </div>

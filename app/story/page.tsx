@@ -35,7 +35,7 @@ export default function StoryPage() {
               width={800}
               height={1000}
               style={{ width: "100%", height: "auto", display: "block" }}
-              unoptimized
+             
             />
           </div>
 

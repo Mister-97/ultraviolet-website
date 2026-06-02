@@ -2,7 +2,8 @@
 import { useRef, useState } from "react"
 import Link from "next/link"
 import ProductGallery from "@/components/ProductGallery"
-import { formatPrice, ShopifyProduct } from "@/lib/shopify"
+import { ShopifyProduct } from "@/lib/shopify"
+import PriceTag from "@/components/PriceTag"
 import { useCart } from "@/context/CartContext"
 import { useLang } from "@/context/LanguageContext"
 import { useT } from "@/lib/translations"
@@ -73,9 +74,7 @@ export default function ProductPageContent({ product, handle, checkoutUrl, descr
               {product.title}
             </h1>
 
-            <p className="font-body text-3xl font-light" style={{ marginBottom: "32px" }}>
-              {formatPrice(product.variants[0].price)}
-            </p>
+            <PriceTag priceVnd={product.variants[0].price} className="font-body text-3xl font-light" style={{ display: "block", marginBottom: "32px" }} />
 
             <div style={{ height: "1px", backgroundColor: "rgba(0,0,0,0.1)", marginBottom: "32px" }} />
 

@@ -2,7 +2,8 @@
 import Link from "next/link"
 import Marquee from "./Marquee"
 import Footer from "./Footer"
-import { formatPrice, ShopifyProduct } from "@/lib/shopify"
+import PriceTag from "./PriceTag"
+import { ShopifyProduct } from "@/lib/shopify"
 import { useLang } from "@/context/LanguageContext"
 import { useT } from "@/lib/translations"
 
@@ -38,9 +39,7 @@ export default function ShopContent({ products }: { products: ShopifyProduct[] }
               <p className="font-display shop-product-title" style={{ letterSpacing: "0.02em", color: "var(--black)", textAlign: "center", marginBottom: "4px" }}>
                 {product.title}
               </p>
-              <p className="font-body text-sm" style={{ color: "var(--gray)", textAlign: "center" }}>
-                {formatPrice(product.variants[0].price)}
-              </p>
+              <PriceTag priceVnd={product.variants[0].price} className="font-body text-sm" style={{ color: "var(--gray)", textAlign: "center", display: "block" }} />
             </Link>
           ))}
 

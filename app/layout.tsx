@@ -17,12 +17,12 @@ const grotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: "UltraViolet",
+  title: "Ultraviolet",
   description: "Hard streetwear. Built different.",
   openGraph: {
-    title: "UltraViolet",
+    title: "Ultraviolet",
     description: "Hard streetwear. Built different.",
-    images: [{ url: "/og-image.jpg", width: 800, height: 1000 }],
+    images: [{ url: "/og-image.jpg", width: 1280, height: 693 }],
   },
 }
 

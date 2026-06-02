@@ -85,12 +85,22 @@ export default function HomeContent({ products }: { products: ShopifyProduct[] }
       {/* COLLECTION */}
       <section className="collection-section relative" style={{ backgroundColor: "var(--cream)" }}>
         <div className="collection-left relative z-10">
-          <h2
+          <div
             className="font-display leading-none"
             style={{ fontSize: "clamp(64px, 7vw, 120px)", color: "var(--black)", letterSpacing: "0.01em" }}
           >
-            {lang === "vi" ? "Bộ Sưu Tập\n2026" : "2026\nCollection"}
-          </h2>
+            {lang === "vi" ? (
+              <>
+                <div>Bộ Sưu Tập</div>
+                <div>2026</div>
+              </>
+            ) : (
+              <>
+                <div>2026</div>
+                <div>Collection</div>
+              </>
+            )}
+          </div>
           <Link
             href="/shop"
             className="font-body text-xs tracking-[0.3em] uppercase transition-all hover:opacity-80 text-center"

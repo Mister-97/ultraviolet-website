@@ -3,6 +3,7 @@ import { Bebas_Neue, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import { CartProvider } from "@/context/CartContext"
 import { LanguageProvider } from "@/context/LanguageContext"
+import CookieBanner from "@/components/CookieBanner"
 
 const bebas = Bebas_Neue({
   weight: "400",
@@ -73,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       </head>
       <body className="min-h-full flex flex-col">
-        <LanguageProvider><CartProvider>{children}</CartProvider></LanguageProvider>
+        <LanguageProvider><CartProvider>{children}<CookieBanner /></CartProvider></LanguageProvider>
       </body>
     </html>
   )
